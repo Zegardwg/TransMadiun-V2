@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-6 text-center text-white text-sm">
-        © 2024 Trans Madiun. All rights reserved.
+        © 2024 Trans Madiun. By EggarDev.
       </div>
     </footer>
   );
