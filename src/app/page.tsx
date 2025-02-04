@@ -87,7 +87,7 @@ const itemVariants = {
           </Link>
         </div>
       </div>
-      </section>
+        </section>
 
         {/* Layanan */}
         <Timeline />
