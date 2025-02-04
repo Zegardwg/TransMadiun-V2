@@ -3,11 +3,23 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, Moon, Sun } from "lucide-react";
+import Loading from "./Loading"; // Import komponen Loading
 
-export default function Navbar({ toggleSidebar }: { toggleSidebar: () => void }) {
+interface NavbarProps {
+  toggleSidebar: () => void;
+}
+
+export default function Navbar({ toggleSidebar }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State untuk loading
+
+  useEffect(() => {
+    // Simulasi loading selama 2 detik
+    const timer = setTimeout(() => setIsLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +35,11 @@ export default function Navbar({ toggleSidebar }: { toggleSidebar: () => void })
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Tampilkan loading jika masih dalam proses
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <header
